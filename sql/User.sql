@@ -21,7 +21,7 @@ creat table `user_info`(
  `line_num` int DEFAULT '0' comment '赞的数量',
  `introduce` varchar(512) DEFAULT '' comment '个人简介',
  `status` tinyint(1) DEFAULT '1' comment `用户状态，0已注销 1正常`,
-	`create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+ `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+ `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
  primary key(`id`)
 ) comment `用户表`;
