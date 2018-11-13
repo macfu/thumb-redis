@@ -5,8 +5,7 @@
 # IntelliJ project files
 .idea
 *.iml
+.DS_Store
 target/
 *.iws
 *.ipr
-out
-gen
