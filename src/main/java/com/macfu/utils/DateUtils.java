@@ -71,6 +71,15 @@ public class DateUtils {
         }
     }
 
+    public static String getYYYYMMDDSecond(Date date) {
+        if (date != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            return sdf.format(date);
+        } else {
+            return null;
+        }
+    }
+
     public static Date getDate(String sDate, String dateFormat) {
         SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
         ParsePosition pos = new ParsePosition(0);
