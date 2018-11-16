@@ -1,3 +1,33 @@
 server:
   port: 9200
   context-path: /thumb
+logging:
+  level:
+    com: debug
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 5  #设置心跳的间隔时间
+    leaseExpirationDurationInSeconds: 30  #如果超过30s会认为,服务宕机
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  datasource:
+    username: macfu
+    password: macfu
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 1000
+      time-between-eviction-runs-millis: 60000
+      max-wait: 30000
+      master:
+        url: jdbc:mysql://127.0.0.1/macfu?characterEncoding=utf-8&useSSL=false
+  redis:
+    host: redis.com
+    port: 4379
+    password: root
+  session:
+      store-type: redis
+
