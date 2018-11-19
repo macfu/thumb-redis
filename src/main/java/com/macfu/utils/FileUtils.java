@@ -10,23 +10,26 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
 
-public class FileUtil {
-
-
-    public static String writeFile(InputStream inputStream, String fileName, String basePath) {
+/**
+ * @Author: liming
+ * @Date: 2018/11/19 17:44
+ * @Description: 文件工具类
+ */
+public class FileUtils {
+    public static String writeFile(InputStream inputstream, String fileName, String basePath) {
         String dateStr = DateUtils.getYYYYMMDD(new Date());
         // TODO 本地环境暂定
-        File realFile = new File(basePath + File.separator + dateStr);
+        File realFiel = new File(basePath + File.separator + dateStr);
         boolean flag = false;
-        if (!realFile.exists()) {
-            flag = realFile.mkdirs();
+        if (!realFiel.exists()) {
+            flag = realFiel.mkdirs();
         }
         OutputStream os = null;
         try {
             os = new FileOutputStream(basePath + File.separator + dateStr + File.separator + fileName);
             int len;
             byte[] bs = new byte[1024];
-            while ((len = inputStream.read(bs)) != -1) {
+            while ((len = inputstream.read(bs)) != -1) {
                 os.write(bs, 0, len);
             }
             return File.separator + dateStr + File.separator + fileName;
@@ -35,13 +38,12 @@ public class FileUtil {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            // 完毕，关闭所有链接
             try {
                 if (os != null) {
                     os.close();
                 }
-                if (inputStream != null) {
-                    inputStream.close();
+                if (inputstream != null) {
+                    inputstream.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -50,7 +52,7 @@ public class FileUtil {
         return "";
     }
 
-    public static byte[] file2Byte(File file) {
+    public static byte[] fileToByte(File file) {
         byte[] buffer = null;
         try {
             FileInputStream fis = new FileInputStream(file);
@@ -71,7 +73,7 @@ public class FileUtil {
         return buffer;
     }
 
-    public static byte[] file2Byte(String filePath) {
+    public static byte[] fileToByte(String filePath) {
         byte[] buffer = null;
         try {
             File file = new File(filePath);
@@ -92,4 +94,5 @@ public class FileUtil {
         }
         return buffer;
     }
+
 }
