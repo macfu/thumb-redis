@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
+<configuration debug="true" scanPeriod="60 seconds">
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <property name="CONSOLE_LOG_PATTERN"
+              value="${CONSOLE_LOG_PATTERN:-%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <springProfile name="dev">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>logs/erp-%d{yyyy-MM-dd}.log</fileNamePattern>
+                <!--<maxHistory>30</maxHistory>-->
+            </rollingPolicy>
+        </springProfile>
+        <springProfile name="pot">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>/psi/logs/pot/erp-%d{yyyy-MM-dd}.log</fileNamePattern>
+                <!--<maxHistory>30</maxHistory>-->
+            </rollingPolicy>
+        </springProfile>
+        <springProfile name="prod">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>/psi/logs/erp-%d{yyyy-MM-dd}.log</fileNamePattern>
+                <!--<maxHistory>30</maxHistory>-->
+            </rollingPolicy>
+        </springProfile>
+    </appender>
+
+    <springProfile name="dev">
+        <!--<logger name="com.baidu.erp" level="DEBUG" >-->
+        <!--<appender-ref ref="FILE" />-->
+        <!--<appender-ref ref="STDOUT"/>-->
+        <!--</logger>-->
+        <!--<logger name="org.springframework.jdbc.datasource" level="TRACE" >-->
+        <!--<appender-ref ref="STDOUT"/>-->
+        <!--</logger>-->
+        <root level="INFO">
+            <appender-ref ref="FILE"/>
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+    <springProfile name="pot">
+        <root level="INFO">
+            <appender-ref ref="FILE"/>
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+    <springProfile name="prod">
+        <root level="INFO">
+            <appender-ref ref="FILE"/>
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+
+
+</configuration>

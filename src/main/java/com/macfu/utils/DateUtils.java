@@ -23,6 +23,51 @@ import java.util.TimeZone;
 public class DateUtils {
 
     /**
+     * 处理十位时间显示为日期格式
+     *
+     * @param date
+     * @return
+     */
+    public static Date dealIntegerDate(Integer date) {
+        if (date == null) {
+            return null;
+        }
+        String s = date + "000";
+        return new Date(Long.valueOf(s));
+    }
+
+    /**
+     * 处理10位时间戳
+     *
+     * @param date
+     * @return
+     */
+    public static Integer dealStartDate(Integer date) {
+        if (date == null) {
+            return null;
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(Long.valueOf(date + "000"));
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        return Math.toIntExact(calendar.getTimeInMillis() / 1000);
+    }
+
+    public static Integer dealEndDate(Integer date) {
+        if (date == null) {
+            return null;
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(Long.valueOf(date + "000"));
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND, 59);
+        return Math.toIntExact(calendar.getTimeInMillis() / 1000);
+    }
+
+
+    /**
      * 获取当前日期以字符串的形式标识
      *
      * @param dataFormat 日期字符串的显示格式
