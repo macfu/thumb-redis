@@ -6,7 +6,11 @@
 
     <groupId>cn.macfu</groupId>
     <artifactId>redis-thumb</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>thumb-user-service</module>
+    </modules>
 
     <name>redis-thumb</name>
     <description>created by gold</description>
