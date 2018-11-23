@@ -11,7 +11,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 /**
  * @Author: liming
  * @Date: 2018/11/13 11:16
- * @Description:
+ * @Description: 主程序启动类
  */
 @SpringBootApplication
 @ServletComponentScan

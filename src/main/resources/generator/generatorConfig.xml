@@ -18,10 +18,7 @@
         <javaModelGenerator targetPackage="${modelPackage}" targetProject="${project}"/>
         <sqlMapGenerator targetPackage="${xmlPackage}" targetProject="${resource}"/>
         <javaClientGenerator targetPackage="${mapperPackage}" targetProject="${project}" type="XMLMAPPER"/>
-        <table tableName="idg_gl_interface_data">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
-        <table tableName="idg_gl_result">
+        <table tableName="${tablename}">
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
     </context>
